@@ -1,5 +1,6 @@
 defmodule Mix.Tasks.LoadData do
-  @moduledoc "Loads food truck data from csv file into postgres."
+  @moduledoc "Loads food truck data from csv file into postgres.  Use a mix task instead of a seed in case we want to update the database at a future date when a new csv is released."
+
   @shortdoc "Load data"
 
   use Mix.Task
@@ -15,7 +16,7 @@ defmodule Mix.Tasks.LoadData do
     |> File.stream!(read_ahead: 100_000)
     |> Parser.parse_stream()
     |> Enum.map(&select_fields/1)
-    |> then(&Repo.insert_all("food_trucks", &1))
+    |> then(&Repo.insert_all(Food.FoodTruck, &1, on_conflict: :replace_all, conflict_target: :id))
   end
 
   # This is the header
