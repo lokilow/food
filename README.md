@@ -1,18 +1,27 @@
 # Food
 
-To start your Phoenix server:
+A solution to the [peck engineering assessment](https://github.com/peck/engineering-assessment) written in Elixir.
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+It is a simple live view page that displays the active food trucks and allows you to search for specific foods.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Setup and Running
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Run 
+```sh
+mix deps.get
+mix ecto.setup
+iex -S mix
+```
 
-## Learn more
+### Caveats
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+I originally wanted to allow the user to filter the food trucks by day of week,
+but the dataset is messy. After a cursory inspection of the data, it seemed that this 
+would be possible, but after working with the data more the information was not available 
+on the active food trucks. I thought linking to the schedule would be a good backup plan,
+but links to the schedule of each food truck do not seem to work. I did not
+investigate thoroughly, but it appears they may be behind a login. I believe there may be 
+a separate API to find this information as well, but that was out of scope for this challenge.
+
+```
+
