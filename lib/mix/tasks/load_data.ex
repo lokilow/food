@@ -6,13 +6,14 @@ defmodule Mix.Tasks.LoadData do
   use Mix.Task
   alias Food.Repo
 
-  @csv Path.join(:code.priv_dir(:food), "data/Mobile_Food_Facility_Permit.csv")
   NimbleCSV.define(Parser, separator: ",", escape: "\"")
 
   @impl Mix.Task
   @requirements ["app.start"]
   def run(_args) do
-    @csv
+    csv = Path.join(:code.priv_dir(:food), "data/Mobile_Food_Facility_Permit.csv")
+
+    csv
     |> File.stream!(read_ahead: 100_000)
     |> Parser.parse_stream()
     |> Enum.map(&select_fields/1)
