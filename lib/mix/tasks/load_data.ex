@@ -6,7 +6,7 @@ defmodule Mix.Tasks.LoadData do
   use Mix.Task
   alias Food.Repo
 
-  @csv Path.expand("priv/data/Mobile_Food_Facility_Permit.csv")
+  @csv Path.join(:code.priv_dir(:food), "data/Mobile_Food_Facility_Permit.csv")
   NimbleCSV.define(Parser, separator: ",", escape: "\"")
 
   @impl Mix.Task
