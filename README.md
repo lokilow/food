@@ -3,6 +3,7 @@
 A solution to the [peck engineering assessment](https://github.com/peck/engineering-assessment) written in Elixir.
 
 It is a simple live view page that displays the active food trucks and allows you to search for specific foods.
+You can access the app [here](https://sffood.fly.dev/)
 
 ## Setup and Running
 
